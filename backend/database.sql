@@ -1,6 +1,6 @@
 -- Création de la base de données
-CREATE DATABASE IF NOT EXISTS roadtrip_connect;
-USE roadtrip_connect;
+CREATE DATABASE IF NOT EXISTS road_passionate;
+USE road_passionate;
 
 -- Table des utilisateurs
 CREATE TABLE IF NOT EXISTS users (

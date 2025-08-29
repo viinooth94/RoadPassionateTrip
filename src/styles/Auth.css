@@ -132,4 +132,40 @@
 
 .auth-link:hover {
   text-decoration: underline;
+}
+
+/* Messages d'erreur et de succès */
+.auth-error,
+.auth-success {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-weight: 500;
+}
+
+.auth-error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.auth-success {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.error-icon,
+.success-icon {
+  font-size: 1.2rem;
+}
+
+/* État de chargement */
+.auth-button:disabled {
+  background-color: var(--gray);
+  cursor: not-allowed;
+  transform: none;
 } 

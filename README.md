@@ -15,6 +15,8 @@ Une plateforme moderne pour organiser et partager des road trips entre passionn�
 ### Prérequis
 - Node.js (version 18 ou supérieure)
 - npm ou yarn
+- **MAMP/XAMPP** installé et configuré
+- MySQL accessible sur le port 8889
 
 ### Installation
 ```bash
@@ -22,23 +24,45 @@ Une plateforme moderne pour organiser et partager des road trips entre passionn�
 git clone [url-du-repo]
 cd roadtrip-connect-website
 
-# Installer les dépendances
+# Installer les dépendances frontend
 npm install
+
+# Installer les dépendances backend
+cd backend
+npm install
+cd ..
+```
+
+### Configuration de la base de données
+```bash
+# 1. Démarrer MAMP/XAMPP et vérifier que MySQL est accessible
+
+# 2. Initialiser la base de données
+cd backend
+npm run init-db
+
+# 3. Remplir avec des données de démonstration
+npm run seed
 ```
 
 ### Lancement du projet
 ```bash
-# Démarrer le frontend (développement)
+# Terminal 1 : Backend
+cd backend
 npm run dev
 
-# Le projet sera accessible sur http://localhost:5173
+# Terminal 2 : Frontend
+npm run dev
 ```
 
-### Lancement du backend (optionnel)
+### Test de la connexion
 ```bash
-# Dans un autre terminal
+# Tester la connexion à la base de données
+node test-connection.js
+
+# Tester l'API
 cd backend
-node index.js
+npm run test
 ```
 
 ## 📁 Structure du projet
@@ -69,6 +93,34 @@ src/
 - **Routage** : React Router DOM
 - **Backend** : Express.js, MySQL
 - **Styling** : CSS personnalisé avec variables CSS
+
+## 🗄️ Base de données
+
+### Configuration
+- **Système** : MySQL (via MAMP/XAMPP)
+- **Port** : 8889 (port par défaut MAMP)
+- **Utilisateur** : root
+- **Mot de passe** : root
+- **Base de données** : road_passionate
+
+### Tables principales
+- **users** : Gestion des comptes utilisateurs
+- **roadtrips** : Road trips créés par les utilisateurs
+- **participants** : Participants aux road trips
+- **tags** : Catégorisation des road trips
+- **roadtrips_tags** : Liaison entre road trips et tags
+
+### Scripts de gestion
+```bash
+# Initialiser la base de données
+npm run init-db
+
+# Remplir avec des données de démonstration
+npm run seed
+
+# Tester la connexion
+node test-connection.js
+```
 
 ## 🛣️ Routes disponibles
 

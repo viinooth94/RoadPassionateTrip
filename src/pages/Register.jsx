@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navigation from '../components/Navigation';
+import { authService } from '../services/api';
 import '../styles/Auth.css';
 
 export default function Register() {
@@ -20,15 +21,54 @@ export default function Register() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setSuccess('');
+    
     // Vérification des mots de passe
     if (formData.password !== formData.confirmPassword) {
-      alert("Les mots de passe ne correspondent pas");
+      setError("Les mots de passe ne correspondent pas");
       return;
     }
-    // Logique d'inscription à implémenter
-    console.log("Tentative d'inscription avec:", formData);
+
+    // Validation des données
+    if (formData.username.length < 3) {
+      setError("Le nom d'utilisateur doit contenir au moins 3 caractères");
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError("Le mot de passe doit contenir au moins 6 caractères");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // Appel à l'API d'inscription
+      const response = await authService.register({
+        username: formData.username,
+        email: formData.email,
+        password: formData.password
+      });
+
+      setSuccess("Inscription réussie ! Vous allez être redirigé vers la page des trajets.");
+      
+      // Redirection vers la page des trajets après 2 secondes
+      setTimeout(() => {
+        navigate('/roadtrips');
+      }, 2000);
+
+    } catch (error) {
+      setError(error.message || "Erreur lors de l'inscription");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -40,6 +80,21 @@ export default function Register() {
           <h1 className="auth-title">Inscription</h1>
           <p className="auth-subtitle">Rejoignez la communauté RoadTrip Connect</p>
         </div>
+
+        {/* Messages d'erreur et de succès */}
+        {error && (
+          <div className="auth-error">
+            <span className="error-icon">❌</span>
+            {error}
+          </div>
+        )}
+        
+        {success && (
+          <div className="auth-success">
+            <span className="success-icon">✅</span>
+            {success}
+          </div>
+        )}
 
         <form className="auth-form" onSubmit={handleSubmit}>
           <div className="form-group">
@@ -94,8 +149,12 @@ export default function Register() {
             />
           </div>
 
-          <button type="submit" className="auth-button">
-            S'inscrire
+          <button 
+            type="submit" 
+            className="auth-button"
+            disabled={loading}
+          >
+            {loading ? 'Inscription en cours...' : 'S\'inscrire'}
           </button>
         </form>
 

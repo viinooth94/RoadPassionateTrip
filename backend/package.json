@@ -1,0 +1,32 @@
+{
+  "name": "roadtrip-connect-backend",
+  "version": "1.0.0",
+  "description": "Backend API pour RoadTrip Connect",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "init-db": "node init-db.js",
+    "seed": "node seed-data.js",
+    "test": "node test-api.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "axios": "^1.6.0"
+  },
+  "keywords": [
+    "roadtrip",
+    "api",
+    "express",
+    "mysql",
+    "nodejs"
+  ],
+  "author": "Votre nom",
+  "license": "MIT"
+}

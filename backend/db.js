@@ -1,11 +1,12 @@
 const mysql = require('mysql2');
+const config = require('./config');
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',  // Mot de passe par défaut de MAMP
-    port: 8889,        // Port par défaut de MAMP pour MySQL
-    database: 'roadtrip_connect'
+    host: config.database.host,
+    user: config.database.user,
+    password: config.database.password,
+    port: config.database.port,
+    database: config.database.database
 });
 
 connection.connect((err) => {

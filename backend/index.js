@@ -11,7 +11,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: "http://localhost:5173", // ← adresse de ton frontend React
+    origin: ["http://localhost:5173", "http://localhost:5174"], // Accepte les deux ports
     credentials: true
   }));
   
@@ -20,6 +20,19 @@ app.use(express.json());
 // Routes API
 app.use("/api/users", userRoutes);
 app.use("/api/trips", tripRoutes);
+
+// Route pour tester l'API des utilisateurs
+app.get('/api/test-users', (req, res) => {
+    res.json({ 
+        message: 'API des utilisateurs accessible',
+        endpoints: {
+            'GET /api/users': 'Récupérer tous les utilisateurs',
+            'GET /api/users/:id': 'Récupérer un utilisateur par ID',
+            'POST /api/users/register': 'Créer un nouvel utilisateur',
+            'POST /api/users/login': 'Se connecter'
+        }
+    });
+});
 
 // Route de test
 app.get('/test', (req, res) => {

@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
 import RoadTrips from "../pages/RoadTrips";
+import RoadTripDetail from "../pages/RoadTripDetail";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/roadtrips",
     element: <RoadTrips />,
+  },
+  {
+    path: "/roadtrips/:id",
+    element: <RoadTripDetail />,
   },
 ], {
   future: {
