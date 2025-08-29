@@ -1,0 +1,165 @@
+.roadtrip-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.roadtrip-card:hover {
+  transform: translateY(-5px);
+}
+
+.roadtrip-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background-color: var(--gray-light);
+}
+
+.image-skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--gray-light) 0%,
+    var(--gray) 50%,
+    var(--gray-light) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.roadtrip-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.roadtrip-image.loaded {
+  opacity: 1;
+}
+
+.roadtrip-content {
+  padding: var(--spacing-md);
+}
+
+.roadtrip-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--dark);
+}
+
+.roadtrip-description {
+  color: var(--gray-dark);
+  margin-bottom: var(--spacing-md);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.roadtrip-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--gray);
+  font-size: 0.875rem;
+}
+
+.roadtrip-duration {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.roadtrip-locations {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--gray-light);
+}
+
+.location-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+.location-arrow {
+  color: var(--gray);
+  font-size: 1.25rem;
+}
+
+/* Styles pour la page de détails */
+.roadtrip-details {
+  padding: var(--spacing-xl) 0;
+}
+
+.roadtrip-hero {
+  position: relative;
+  height: 400px;
+  margin-bottom: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.roadtrip-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.roadtrip-hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--spacing-xl);
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  color: white;
+}
+
+.roadtrip-stops {
+  margin-top: var(--spacing-xl);
+}
+
+.stop-item {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: white;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.stop-number {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  font-weight: 600;
+} 

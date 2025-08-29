@@ -1,0 +1,309 @@
+/* Page des trajets */
+.roadtrips-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.roadtrips-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+.roadtrips-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.roadtrips-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grille des trajets */
+.roadtrips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Carte de trajet */
+.roadtrip-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.roadtrip-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.roadtrip-card.expanded {
+  transform: scale(1.02);
+}
+
+/* Image de la carte */
+.card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.roadtrip-card:hover .card-image img {
+  transform: scale(1.1);
+}
+
+.card-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.difficulty-badge,
+.price-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.price-badge {
+  background: rgba(34, 197, 94, 0.9);
+}
+
+/* Contenu de la carte */
+.card-content {
+  padding: 1.5rem;
+}
+
+.trip-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+/* Métadonnées du trajet */
+.trip-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.meta-icon {
+  font-size: 1rem;
+}
+
+/* Description */
+.trip-description {
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Tags */
+.trip-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background: #e5e7eb;
+  color: #374151;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Section des voitures */
+.cars-section {
+  margin-bottom: 1rem;
+}
+
+.cars-section h4 {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.cars-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.car-item {
+  background: #f3f4f6;
+  color: #1f2937;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid #d1d5db;
+}
+
+/* Section des participants */
+.participants-section {
+  margin-bottom: 1.5rem;
+}
+
+.participants-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.participants-count {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #059669);
+  transition: width 0.3s ease;
+}
+
+/* Bouton participer */
+.join-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.join-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.join-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* État de chargement */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  color: white;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* État vide */
+.no-trips {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .roadtrips-container {
+    padding: 1rem;
+  }
+  
+  .roadtrips-header h1 {
+    font-size: 2rem;
+  }
+  
+  .roadtrips-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .trip-meta {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .roadtrips-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .roadtrips-header p {
+    font-size: 1rem;
+  }
+  
+  .trip-title {
+    font-size: 1.3rem;
+  }
+}
